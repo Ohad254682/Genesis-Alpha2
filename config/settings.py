@@ -22,7 +22,7 @@ DEFAULT_ASSETS = [
 ]
 
 # Get API key from multiple sources (priority order):
-# 1. Environment variable
+# 1. Environment variable (Streamlit Cloud Secrets are also accessible via os.getenv)
 # 2. .env file in project root
 # 3. api_key.txt file in project root (for backward compatibility)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")

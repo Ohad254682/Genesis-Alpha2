@@ -110,9 +110,17 @@ def plot_pe_ratios(data, ticker, eps):
     ticker (str): The stock ticker symbol.
     eps (float): The earnings per share of the stock.
 
+
     Returns:
     matplotlib.figure.Figure: The figure object or None if EPS is invalid.
     """
+
+# EPS (Earnings Per Share) represents the company's profit per share.
+# Formula: EPS = Net Income / Number of Outstanding Shares
+# Example:
+# If a company earned $100M and has 50M shares outstanding:
+# EPS = 100 / 50 = 2
+# This value is commonly used to calculate the P/E ratio (Price / EPS).
     if eps is None or eps == 0:
         return None
     

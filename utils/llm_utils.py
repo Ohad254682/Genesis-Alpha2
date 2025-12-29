@@ -55,7 +55,7 @@ def initialize_llm(api_key, max_retries=3):
         except (APIConnectionError, APITimeoutError) as e:
             last_error = e
             if attempt < max_retries - 1:
-                time.sleep(2 * (attempt + 1))  # Exponential backoff
+                time.sleep(2 * (attempt + 1))  #backoff
             else:
                 raise RequestsConnectionError(
                     f"Failed to initialize LLM after {max_retries} attempts. "
@@ -89,6 +89,9 @@ def get_llm_response(llm, prompt, max_retries=3, retry_delay=2):
     
     Raises:
     ConnectionError: If connection fails after all retries.
+
+    look for the function generate_ai_recommendations_cache in main.py -
+    there you'll find the prompt that is sent to the LLM.
     """
     last_error = None
     
@@ -99,7 +102,7 @@ def get_llm_response(llm, prompt, max_retries=3, retry_delay=2):
         except (APIConnectionError, APITimeoutError) as e:
             last_error = e
             if attempt < max_retries - 1:
-                time.sleep(retry_delay * (attempt + 1))  # Exponential backoff
+                time.sleep(retry_delay * (attempt + 1))  # backoff
             else:
                 raise RequestsConnectionError(
                     f"Failed to get LLM response after {max_retries} attempts. "
